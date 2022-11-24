@@ -23,15 +23,24 @@ async function run() {
     try {
 
         const usersCollection = client.db('assignment').collection('users');
+        const categoryName = client.db('assignment').collection('categoryName');
 
         // --------------------------------------------
 
         app.post('/users', async (req, res) => {
             const user = req.body;
-            console.log(user);
+            // console.log(user);
             const result = await usersCollection.insertOne(user);
             res.send(result);
 
+        })
+
+        //get category name
+
+        app.get('/category', async (req, res) => {
+            const query = {};
+            const cursor = await categoryName.find(query).toArray();
+            res.send(cursor);
         })
 
     }

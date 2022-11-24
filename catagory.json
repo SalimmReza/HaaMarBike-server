@@ -1,0 +1,17 @@
+[
+    {
+        "category_id": "01",
+        "category": "Sports Bike",
+        "img": "https://images.pexels.com/photos/51388/motorbike-racing-motorcycle-race-51388.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    },
+    {
+        "category_id": "02",
+        "category": "Naked Bike",
+        "img": "https://images.pexels.com/photos/2948295/pexels-photo-2948295.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    },
+    {
+        "category_id": "03",
+        "category": "Mountain Bike",
+        "img": "https://images.pexels.com/photos/356289/pexels-photo-356289.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    }
+]

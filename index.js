@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
+const { query } = require('express');
 const app = express();
 const port = process.env.Port || 5000;
 
@@ -24,6 +25,7 @@ async function run() {
 
         const usersCollection = client.db('assignment').collection('users');
         const categoryName = client.db('assignment').collection('categoryName');
+        const categoryDetailsCollection = client.db('assignment').collection('category');
 
         // --------------------------------------------
 
@@ -37,10 +39,26 @@ async function run() {
 
         //get category name
 
-        app.get('/category', async (req, res) => {
+        app.get('/categoryName', async (req, res) => {
             const query = {};
             const cursor = await categoryName.find(query).toArray();
             res.send(cursor);
+        })
+
+        //onnek gula category ase kin2 ami jei category te dhukbo oi categoryr jnish porto dekhabe
+
+        app.get('/category', async (req, res) => {
+            let query = {};
+            if (req.query.category_id) {
+                console.log(req.query.category_id);
+                query = {
+                    category_id: req.query.category_id
+                }
+            }
+            const cursor = await categoryDetailsCollection.find(query).toArray()
+            // const review = await cursor.toArray();
+            res.send(cursor)
+
         })
 
     }

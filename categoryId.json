@@ -1,0 +1,74 @@
+[
+    {
+        "category_id": "01",
+        "category_name": "Sports Bike",
+        "image": "https://images.pexels.com/photos/11177954/pexels-photo-11177954.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "item_name": "Yamaha",
+        "sellers_location": "Dhaka, Bangladesh",
+        "resale_price": "150",
+        "original_price": "300",
+        "year_of_use": "2",
+        "time_posted": "2 June",
+        "sellers_name": "Salim"
+    },
+    {
+        "category_id": "01",
+        "category_name": "Sports Bike",
+        "image": "https://images.pexels.com/photos/8194537/pexels-photo-8194537.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "item_name": "Suzuki",
+        "sellers_location": "Dinajpur, Bangladesh",
+        "resale_price": "100",
+        "original_price": "250",
+        "year_of_use": "3",
+        "time_posted": "5 July",
+        "sellers_name": "Reza"
+    },
+    {
+        "category_id": "02",
+        "category_name": "Naked Bike",
+        "image": "https://images.pexels.com/photos/6924495/pexels-photo-6924495.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "item_name": "Suzuki",
+        "sellers_location": "Rangpur, Bangladesh",
+        "resale_price": "100",
+        "original_price": "50",
+        "year_of_use": "3",
+        "time_posted": "5 August",
+        "sellers_name": "Riad"
+    },
+    {
+        "category_id": "02",
+        "category_name": "Naked Bike",
+        "image": "https://images.pexels.com/photos/4513031/pexels-photo-4513031.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "item_name": "Hero",
+        "sellers_location": "Dinajpur, Bangladesh",
+        "resale_price": "100",
+        "original_price": "250",
+        "year_of_use": "3",
+        "time_posted": "9 July",
+        "sellers_name": "Refath"
+    },
+    {
+        "category_id": "03",
+        "category_name": "Mountain Bike",
+        "image": "https://images.pexels.com/photos/5023579/pexels-photo-5023579.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "item_name": "Hero Honda",
+        "sellers_location": "Kaliganj, Bangladesh",
+        "resale_price": "200",
+        "original_price": "250",
+        "year_of_use": "1",
+        "time_posted": "5 November",
+        "sellers_name": "Hasan"
+    },
+    {
+        "category_id": "03",
+        "category_name": "Mountain",
+        "image": "https://images.pexels.com/photos/8425811/pexels-photo-8425811.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "item_name": " Royal Enfield Himalayan",
+        "sellers_location": "Dhaka, Bangladesh",
+        "resale_price": "500",
+        "original_price": "650",
+        "year_of_use": "2",
+        "time_posted": "25 January",
+        "sellers_name": "Reza"
+    }
+]

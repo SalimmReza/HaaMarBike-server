@@ -70,6 +70,18 @@ async function run() {
             res.send(result)
         })
 
+        //amr email er shob bookings pabo
+        app.get('/booking', async (req, res) => {
+            let query = {}
+            if (req.query.email) {
+                query = {
+                    email: req.query.email
+                }
+            }
+            const cursor = await bookingsCollection.find(query).toArray();
+            res.send(cursor);
+        })
+
 
     }
     finally {

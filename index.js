@@ -38,6 +38,53 @@ async function run() {
 
         })
 
+        // app.get('/users', async (req, res) => {
+        //     const query = {};
+        //     const cursor = await usersCollection.find(query).toArray();
+        //     res.send(cursor);
+        // })
+
+        //user seller  admin
+
+        app.get('/users', async (req, res) => {
+            let query = {}
+            if (req.query.accountType) {
+                query = {
+                    accountType: req.query.accountType
+                }
+            }
+            const cursor = await usersCollection.find(query).toArray();
+            res.send(cursor);
+        })
+
+        app.get('/users/:email', async (req, res) => {
+            const email = req.params.email;
+            const query = { email }
+            const user = await usersCollection.findOne(query);
+            const users = [
+                {
+                    isSeller: user?.accountType === "seller"
+                }, {
+                    isUser: user?.accountType === "user"
+                }, {
+                    isAdmin: user?.accountType === "admin"
+                }
+            ]
+
+            // if (users === 'seller') {
+            //     isSeller
+            // }
+            // if (users === 'user') {
+            //     isUser
+            // }
+            // if (users === 'admin') {
+            //     isAdmin
+            // }
+
+            res.send(users);
+        })
+
+
         //get category name
 
         app.get('/categoryName', async (req, res) => {
@@ -74,6 +121,13 @@ async function run() {
             const products = req.body;
             const result = await categoryDetailsCollection.insertOne(products);
             res.send(result);
+        })
+
+        app.delete('/category/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: ObjectId(id) };
+            const cursor = await categoryDetailsCollection.deleteOne(filter);
+            res.send(cursor);
         })
 
         // //ami ekta seller amr email diye jeigula produt add korsi oigula dekhabe shudhu

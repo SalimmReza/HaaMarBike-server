@@ -50,17 +50,45 @@ async function run() {
 
         app.get('/category', async (req, res) => {
             let query = {};
+            if (req.query.email) {
+                // console.log(req.query.category_id);
+                query = {
+                    email: req.query.email
+                }
+            }
+
             if (req.query.category_id) {
-                console.log(req.query.category_id);
                 query = {
                     category_id: req.query.category_id
                 }
             }
+
             const cursor = await categoryDetailsCollection.find(query).toArray()
-            // const review = await cursor.toArray();
             res.send(cursor)
 
         })
+
+        //add products
+
+        app.post('/category', async (req, res) => {
+            const products = req.body;
+            const result = await categoryDetailsCollection.insertOne(products);
+            res.send(result);
+        })
+
+        // //ami ekta seller amr email diye jeigula produt add korsi oigula dekhabe shudhu
+        // app.get('/category', async (req, res) => {
+        //     let query = {};
+        //     if (req.query.category_id) {
+        //         // console.log(req.query.category_id);
+        //         query = {
+        //             category_id: req.query.category_id
+        //         }
+        //     }
+        //     const cursor = await categoryDetailsCollection.find(query).toArray()
+        //     res.send(cursor)
+
+        // })
 
 
         //bookings
@@ -81,6 +109,9 @@ async function run() {
             const cursor = await bookingsCollection.find(query).toArray();
             res.send(cursor);
         })
+
+
+
 
 
     }

@@ -130,6 +130,23 @@ async function run() {
             res.send(cursor);
         })
 
+
+        //advertise
+
+        app.put('/category/:id', async (req, res) => {
+            // const payment = req.body;
+            // const result = await paymentsCollection.insertOne(payment);
+            const id = req.params.id
+            const filter = { _id: ObjectId(id) }
+            const updatedDoc = {
+                $set: {
+                    advertise: true,
+                }
+            }
+            const updatedResult = await categoryDetailsCollection.updateOne(filter, updatedDoc)
+            res.send(updatedResult);
+        })
+
         // //ami ekta seller amr email diye jeigula produt add korsi oigula dekhabe shudhu
         // app.get('/category', async (req, res) => {
         //     let query = {};

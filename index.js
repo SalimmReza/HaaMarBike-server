@@ -61,31 +61,18 @@ async function run() {
             const email = req.params.email;
             const query = { email }
             const user = await usersCollection.findOne(query);
-            // const users = [
-            //     {
-            //         isSeller: user?.accountType === "seller"
-            //     }, {
-            //         isUser: user?.accountType === "user"
-            //     }, {
-            //         isAdmin: user?.accountType === "admin"
-            //     }
-            // ]
-
-            // if (users === 'seller') {
-            //     isSeller
-            // }
-            // if (users === 'user') {
-            //     isUser
-            // }
-            // if (users === 'admin') {
-            //     isAdmin
-            // }
-
             res.send({
                 isSeller: user?.accountType === "seller",
                 isUser: user?.accountType === "user",
 
             });
+        })
+
+        app.delete('/users/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: ObjectId(id) };
+            const cursor = await usersCollection.deleteOne(filter);
+            res.send(cursor);
         })
 
 

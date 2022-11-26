@@ -31,6 +31,7 @@ async function run() {
         const categoryDetailsCollection = client.db('assignment').collection('category');
         const bookingsCollection = client.db('assignment').collection('bookings');
         const paymentsCollection = client.db('assignment').collection('payments');
+        const advertiseCollection = client.db('assignment').collection('advertise');
 
         // --------------------------------------------
 
@@ -69,7 +70,9 @@ async function run() {
             const user = await usersCollection.findOne(query);
             res.send({
                 isSeller: user?.accountType === "seller",
+                isAdmin: user?.accountType === "admin",
                 isUser: user?.accountType === "user",
+
 
             });
         })
@@ -156,7 +159,7 @@ async function run() {
             res.send(updatedResult);
         })
 
-        //advertise
+        // advertise
         app.put('/category/:id', async (req, res) => {
             // const payment = req.body;
             // const result = await paymentsCollection.insertOne(payment);
@@ -170,6 +173,9 @@ async function run() {
             const updatedResult = await categoryDetailsCollection.updateOne(filter, updatedDoc)
             res.send(updatedResult);
         })
+
+
+
 
         // //ami ekta seller amr email diye jeigula produt add korsi oigula dekhabe shudhu
         // app.get('/category', async (req, res) => {
@@ -241,7 +247,7 @@ async function run() {
                     transactionId: payment.transactionId
                 }
             }
-            const updatedResult = await bookingsCollection.updateOne(filter, updatedDoc)
+            const updatedResult = await (bookingsCollection).updateOne(filter, updatedDoc)
             res.send(result);
         })
 

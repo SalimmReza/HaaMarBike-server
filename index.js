@@ -61,15 +61,15 @@ async function run() {
             const email = req.params.email;
             const query = { email }
             const user = await usersCollection.findOne(query);
-            const users = [
-                {
-                    isSeller: user?.accountType === "seller"
-                }, {
-                    isUser: user?.accountType === "user"
-                }, {
-                    isAdmin: user?.accountType === "admin"
-                }
-            ]
+            // const users = [
+            //     {
+            //         isSeller: user?.accountType === "seller"
+            //     }, {
+            //         isUser: user?.accountType === "user"
+            //     }, {
+            //         isAdmin: user?.accountType === "admin"
+            //     }
+            // ]
 
             // if (users === 'seller') {
             //     isSeller
@@ -81,7 +81,11 @@ async function run() {
             //     isAdmin
             // }
 
-            res.send(users);
+            res.send({
+                isSeller: user?.accountType === "seller",
+                isUser: user?.accountType === "user",
+
+            });
         })
 
 

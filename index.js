@@ -57,6 +57,8 @@ async function run() {
             res.send(cursor);
         })
 
+        //finding admin user seller
+
         app.get('/users/:email', async (req, res) => {
             const email = req.params.email;
             const query = { email }
@@ -68,11 +70,26 @@ async function run() {
             });
         })
 
+        //deleting  all buyers all sellers
+
         app.delete('/users/:id', async (req, res) => {
             const id = req.params.id;
             const filter = { _id: ObjectId(id) };
             const cursor = await usersCollection.deleteOne(filter);
             res.send(cursor);
+        })
+
+        //verifying sellers
+        app.put('/users/:id', async (req, res) => {
+            const id = req.params.id
+            const filter = { _id: ObjectId(id) }
+            const updatedDoc = {
+                $set: {
+                    verified: true,
+                }
+            }
+            const updatedResult = await usersCollection.updateOne(filter, updatedDoc)
+            res.send(updatedResult);
         })
 
 
@@ -122,8 +139,20 @@ async function run() {
         })
 
 
-        //advertise
+        //verify sellers
+        app.put('/users/:id', async (req, res) => {
+            const id = req.params.id
+            const filter = { _id: ObjectId(id) }
+            const updatedDoc = {
+                $set: {
+                    verified: true,
+                }
+            }
+            const updatedResult = await usersCollection.updateOne(filter, updatedDoc)
+            res.send(updatedResult);
+        })
 
+        //advertise
         app.put('/category/:id', async (req, res) => {
             // const payment = req.body;
             // const result = await paymentsCollection.insertOne(payment);

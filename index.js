@@ -31,7 +31,7 @@ async function run() {
         const categoryDetailsCollection = client.db('assignment').collection('category');
         const bookingsCollection = client.db('assignment').collection('bookings');
         const paymentsCollection = client.db('assignment').collection('payments');
-        const advertiseCollection = client.db('assignment').collection('advertise');
+        const wishlistCollection = client.db('assignment').collection('wishlist');
 
         // --------------------------------------------
 
@@ -111,6 +111,7 @@ async function run() {
         //onnek gula category ase kin2 ami jei category te dhukbo oi categoryr jnish porto dekhabe
 
         app.get('/category', async (req, res) => {
+
             let query = {};
             if (req.query.email) {
                 // console.log(req.query.category_id);
@@ -267,6 +268,32 @@ async function run() {
             res.send(result);
         })
 
+        //wishlist
+
+        app.post('/wishlist', async (req, res) => {
+            const products = req.body;
+            const result = await wishlistCollection.insertOne(products);
+            res.send(result);
+        })
+        //amr email er shob wishlist pabo
+
+        app.get('/wishlist', async (req, res) => {
+            let query = {}
+            if (req.query.email) {
+                query = {
+                    email: req.query.email
+                }
+            }
+            const cursor = await wishlistCollection.find(query).toArray();
+            res.send(cursor);
+        })
+
+        app.delete('/wishlist/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: ObjectId(id) };
+            const cursor = await wishlistCollection.deleteOne(filter);
+            res.send(cursor);
+        })
 
 
 

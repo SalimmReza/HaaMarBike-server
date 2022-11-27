@@ -146,18 +146,18 @@ async function run() {
         })
 
 
-        //verify sellers
-        app.put('/users/:id', async (req, res) => {
-            const id = req.params.id
-            const filter = { _id: ObjectId(id) }
-            const updatedDoc = {
-                $set: {
-                    verified: true,
-                }
-            }
-            const updatedResult = await usersCollection.updateOne(filter, updatedDoc)
-            res.send(updatedResult);
-        })
+        // //verify sellers
+        // app.put('/users/:id', async (req, res) => {
+        //     const id = req.params.id
+        //     const filter = { _id: ObjectId(id) }
+        //     const updatedDoc = {
+        //         $set: {
+        //             verified: true,
+        //         }
+        //     }
+        //     const updatedResult = await usersCollection.updateOne(filter, updatedDoc)
+        //     res.send(updatedResult);
+        // })
 
         // advertise
         app.put('/category/:id', async (req, res) => {
@@ -216,6 +216,13 @@ async function run() {
             const query = { _id: ObjectId(id) };
             const booking = await bookingsCollection.findOne(query);
             res.send(booking);
+        })
+
+        app.delete('/booking/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: ObjectId(id) };
+            const cursor = await bookingsCollection.deleteOne(filter);
+            res.send(cursor);
         })
 
         //payment
